@@ -1,0 +1,10 @@
+/scratch
+/.vscode
+/env.*.json
+
+.DS_Store
+.*_cache
+__pycache__
+
+
+

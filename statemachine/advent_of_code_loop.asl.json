@@ -1,0 +1,36 @@
+{
+    "Comment": "A loop running the advent_of_code_bot lambda function every 15 minutes until it fails. Initial state is empty dict. Will be mapped to first valid state without any message submitted.",
+    "StartAt": "Init",
+    "States": {
+      "Init": {
+        "Type": "Pass",
+        "Result": {},
+        "Next": "Poll"
+      },
+      "Poll": {
+        "Type": "Task",
+        "Resource": "arn:aws:lambda:eu-central-1:702948934075:function:advent_of_code_bot",
+        "Next": "Check"
+      },
+      "Check": {
+        "Type": "Choice",
+        "Comment": "In practice, the lambda will fail rather than return invalid input, so this is probably not needed. Aborting here will also require a restart if aoc is down...",
+        "Choices": [
+            {
+                "Variable": "$.members",
+                "IsPresent": true,
+                "Next": "Wait"
+            }
+        ],
+        "Default": "Fail"
+      },
+      "Wait": {
+        "Type": "Wait",
+        "Seconds": 900,
+        "Next": "Poll"
+      },
+      "Fail": {
+        "Type": "Fail"
+      }
+    }
+  }
