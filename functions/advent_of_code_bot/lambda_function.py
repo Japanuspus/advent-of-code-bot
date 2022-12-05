@@ -82,7 +82,11 @@ def get_aoc_state(cfg: Config) -> None | State:
     """
     aoc_url = f"https://adventofcode.com/{cfg.aoc_year}/leaderboard/private/view/{cfg.aoc_board}.json"
     url = request.Request(
-        aoc_url, headers={"Cookie": f"session={cfg.aoc_session_cookie}"}
+        aoc_url, headers={
+            "Cookie": f"session={cfg.aoc_session_cookie}",
+            # https://old.reddit.com/r/adventofcode/comments/z9dhtd/please_include_your_contact_info_in_the_useragent/
+            "User-Agent": "github.com/japanuspus/advent-of-code-bot by @japanuspus"
+        }
     )
 
     try:
