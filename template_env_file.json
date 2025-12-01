@@ -1,0 +1,6 @@
+{
+    "aoc_session_cookie": "cookie value from browser",
+    "slack_webhook_url": "https://hooks.slack.com/services/some token value",
+    "aoc_year": "2022",
+    "aoc_board": "123456"
+}

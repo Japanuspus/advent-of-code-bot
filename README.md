@@ -7,3 +7,10 @@ The system moving parts consist of
 - As AWS state machine that calls the lambda function.
 - (in progress) A GitHub action that updates the lambda function when changes are merged to main.
 
+
+## Start of season update
+
+- Update production env file
+- Commit to AWS lambda via script
+- Start new execution of the state machine
+
